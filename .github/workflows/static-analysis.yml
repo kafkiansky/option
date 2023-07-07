@@ -5,8 +5,8 @@ on:
   pull_request:
 
 jobs:
-  psalm:
-    name: Psalm
+  stan:
+    name: Static Analysis
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -26,6 +26,9 @@ jobs:
           timeout_minutes: 5
           max_attempts: 5
           command: composer update --prefer-dist --no-interaction --no-progress
-      - name: Static Analysis
+      - name: Psalm
         continue-on-error: true
         run: vendor/bin/psalm --no-cache
+      - name: PHPStan
+        continue-on-error: true
+        run: vendor/bin/phpstan analyse src tests

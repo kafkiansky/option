@@ -1,0 +1,7 @@
+parameters:
+	level: 9
+	paths:
+		- src
+		- tests
+	ignoreErrors:
+	    - '#Template type E of method Kafkiansky\\Option\\Option::none\(\) is not referenced in a parameter#'
